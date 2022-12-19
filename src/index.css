@@ -1,0 +1,14 @@
+.container {
+    max-width: 400px;
+    padding: 10px;
+    margin: auto;
+  }
+  
+  .product-page {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: auto;
+    border: 2px dashed pink;
+  }

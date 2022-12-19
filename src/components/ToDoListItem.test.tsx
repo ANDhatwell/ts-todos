@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import { TodoListItem } from "./ToDoListItem"
+import userEvent from "@testing-library/user-event"
 
 describe('ToDoListItem', ()=>{
     const toggleTodo = jest.fn()
@@ -18,10 +19,11 @@ describe('ToDoListItem', ()=>{
     })
 
     it('should complete todo', ()=>{
-    const todo: Todo = {text: 'Go to the post office', complete: true}
+    const todo: Todo = {text: 'Go to the post office', complete: false}
     render(<TodoListItem todo={todo} toggleTodo={toggleTodo}/>)
     expect(screen.getByText(/go to the post office/i)).toBeInTheDocument()
     const checkbox = screen.getByRole('checkbox')
-    expect(checkbox).not.toBeChecked()
+    userEvent.click(checkbox)
+    expect(toggleTodo).toHaveBeenCalledWith(todo)
 })
 })
